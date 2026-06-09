@@ -24,7 +24,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
     Product(name: 'Bluetooth Speaker', price: 79.00, spec: '10W Output', icon: Icons.volume_up),
     Product(name: 'Laptop Stand', price: 45.00, spec: 'Aluminum', icon: Icons.laptop),
   ];
- 
+
   // total price of cart items
   double _calculateTotal() {
     return _cartItems.fold(0, (sum, item) => sum + item.price);
@@ -37,7 +37,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
       barrierDismissible: false,
       builder: (BuildContext context) => AddToCartDialog(
         product: product,
-        classOnConfirm: () {
+        onConfirm: () {
           setState(() {
             _cartItems.add(product);
           });
@@ -60,7 +60,7 @@ class _ShoppingCartScreenState extends State<ShoppingCartScreen> {
       barrierDismissible: false,
       builder: (BuildContext context) => DeleteDialog(
         itemName: product.name,
-        classOnConfirm: () {
+        onConfirm: () {
           setState(() {
             _cartItems.removeAt(index);
           });
